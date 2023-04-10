@@ -1,0 +1,6 @@
+venv/
+.idea/
+cahe/
+README.MD
+*.DS_Store
+env_example

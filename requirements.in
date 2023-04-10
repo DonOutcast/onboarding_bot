@@ -1,0 +1,12 @@
+--pre
+pip-tools
+asyncpg==0.27.0
+alembic==1.10.3
+aioredis==2.0.1
+aiogram==3.0.0b7
+Django==4.2
+Jinja2==3.1.2
+pydantic==1.10.7
+psycopg2-binary==2.9.6
+load-dotenv==0.1.0
+
