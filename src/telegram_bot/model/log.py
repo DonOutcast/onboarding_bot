@@ -1,10 +1,10 @@
-import json
-import logging
-import functools
-import logging.config
+# import json
+# import logging
+# import functools
+# import logging.config
 
-from configurate.config import CONFIGURATE_DIR, LOGGING
-
+# from configurate.config import CONFIGURATE_DIR, LOGGING
+from configurate.config import LOGGING
 
 class LoggerCore:
 
@@ -72,4 +72,4 @@ def databasorator(debug_on: bool):
     return decorator
 
 
-logger = LoggerCore(CONFIGURATE_DIR)
+# logger = LoggerCore(CONFIGURATE_DIR)
