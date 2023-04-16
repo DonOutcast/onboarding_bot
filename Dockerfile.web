@@ -5,7 +5,6 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
 WORKDIR /code
-
 ADD web-requirements.txt requirements.txt
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
@@ -17,9 +16,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 COPY Makefile Makefile
 COPY src/onboarding src
-USER nobody:nogroup
 HEALTHCHECK --interval=30s --timeout=5s \
   CMD curl -f http://localhost:5001/ || exit 1
-#CMD ["python3", "-u", "src/manage.py", "runserver"]
 EXPOSE 8000
 CMD ["make", "web"]

@@ -14,6 +14,8 @@ django==4.2
     # via -r web-requirements.in
 packaging==23.0
     # via build
+pillow==9.5.0
+    # via -r web-requirements.in
 pip-tools==6.13.0
     # via -r web-requirements.in
 psycopg2-binary==2.9.6

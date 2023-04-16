@@ -5,15 +5,21 @@ from aiogram.types import Message
 from model.template.templates import render
 
 from model.services.categories import Categories
+# import sys
+#
+# sys.path.append("src/onboarding/core")
 
+from ..onboarding.core.models import Users
 
 user_router = Router()
 headers = {"throttling_key": "default", "long_operation": "typing"}
+
 
 @user_router.message(CommandStart())
 async def user_start(message: Message):
     await message.answer(text="Hello start")
     await message.answer(text=render.render_template(template_name="user.html"))
+    print(message)
 
 
 @user_router.message(Command(commands="categories"), flags=headers)
