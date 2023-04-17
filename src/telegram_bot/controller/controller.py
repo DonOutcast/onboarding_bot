@@ -2,7 +2,9 @@ from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram import exceptions
 from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.storage.redis import RedisStorage
 from aiogram.types import BotCommandScopeDefault, MenuButtonWebApp, WebAppInfo
+from aioredis import Redis
 
 from configurate.config import settings
 
@@ -23,9 +25,11 @@ from model.commnad_scope.scopes import SetCommands, default_commands
 # from model.handlers.echo import echo_router
 class Controller(object):
     __instance = None
+    redis = Redis()
+
     bot = Bot(settings.bot_token.get_secret_value(), parse_mode="HTML")
     storage = MemoryStorage
-    dp = Dispatcher()
+    dp = Dispatcher(storage=RedisStorage(redis=redis))
 
     def __new__(cls):
         if cls.__instance is None:

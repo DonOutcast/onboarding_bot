@@ -1,8 +1,11 @@
 version: "3.8"
 services:
   redis_db:
-    image: redis/redis-stack
+#    image: redis/redis-stack
     container_name: ${REDIS_CONTAINER_NAME}
+    build:
+      context: devops/redis
+      dockerfile: Dockerfile
     restart: "unless-stopped"
     env_file:
       - ".env"
@@ -76,6 +79,9 @@ services:
       dockerfile: Dockerfile.web
     env_file:
       - ".env"
+    environment:
+      DOCKER_UID: 0
+      DOCKER_GID: 0
     ports:
       - 8000:8000
     networks:

@@ -3,18 +3,15 @@ PYTHON = python3
 TARGET_FILE = manage.py
 COMPOSE_FILE = docker-compose.yml
 
-all: build up
+all: migrations migrate run
 
 migrations:
-	$(PYTHON) $(SOURCE_DIR)$(TARGET_FILE) makemigrations
+	$(PYTHON) $(SOURCE_DIR)/onboarding/$(TARGET_FILE) makemigrations
 
 createsuperuserifnotexist:
-#	cd src/
-#	export DJANGO_SETTINGS_MODULE=onboarding.settings
-#	cd ..
 	python -c "import sys; \
 			import os; \
-			os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.onboarding.settings'); \
+			os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.onboarding.onboarding.settings'); \
 			import django; \
 			django.setup(); \
 			from django.contrib.auth.models import User; \
@@ -25,12 +22,11 @@ createsuperuserifnotexist:
 			User.objects.create_superuser(username=username, email=email, password=password);"
 
 migrate:
-	$(PYTHON) $(SOURCE_DIR)$(TARGET_FILE) migrate
+	$(PYTHON) $(SOURCE_DIR)/onboarding/$(TARGET_FILE) migrate
 
 run:
-	$(PYTHON) $(SOURCE_DIR)$(TARGET_FILE) runserver 0.0.0.0:8000
-
-web: migrations migrate createsuperuserifnotexist  run
+	$(PYTHON) $(SOURCE_DIR)/onboarding/$(TARGET_FILE) runserver
+web: migrate createsuperuserifnotexist run
 
 # Команды Docker
 build:

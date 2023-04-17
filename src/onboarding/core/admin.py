@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Users
+from .models import OfficeMap
 
 
-class UsersAdmin(admin.ModelAdmin):
-    list_display = ("id", "external_id", "name")
+class OfficeMapAdmin(admin.ModelAdmin):
+    list_display = ('id', "title", "photo")
 
 
-admin.site.register(Users, UsersAdmin)
+admin.site.register(OfficeMap, OfficeMapAdmin)
