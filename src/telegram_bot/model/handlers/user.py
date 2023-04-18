@@ -9,7 +9,7 @@ from model.services.categories import Categories
 #
 # sys.path.append("src/onboarding/core")
 
-from ..onboarding.core.models import Users
+
 
 user_router = Router()
 headers = {"throttling_key": "default", "long_operation": "typing"}
@@ -19,7 +19,7 @@ headers = {"throttling_key": "default", "long_operation": "typing"}
 async def user_start(message: Message):
     await message.answer(text="Hello start")
     await message.answer(text=render.render_template(template_name="user.html"))
-    print(message)
+    print(message.location)
 
 
 @user_router.message(Command(commands="categories"), flags=headers)

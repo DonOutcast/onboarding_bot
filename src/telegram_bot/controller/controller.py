@@ -29,7 +29,7 @@ class Controller(object):
 
     bot = Bot(settings.bot_token.get_secret_value(), parse_mode="HTML")
     storage = MemoryStorage
-    dp = Dispatcher(storage=RedisStorage(redis=redis))
+    dp = Dispatcher()
 
     def __new__(cls):
         if cls.__instance is None:

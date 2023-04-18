@@ -11,6 +11,7 @@ Plugin 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'dense-analysis/ale'
 Plugin 'tpope/vim-commentary'
+Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 call vundle#end()
 filetype plugin indent on    " включить поддержку плагинов
 
